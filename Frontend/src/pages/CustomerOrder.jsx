@@ -20,7 +20,7 @@ const CustomerOrder = () => {
   const [limit, setLimit] = useState(5);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
-    if (!customer) Navigate("/logincustomer");
+    if (!customer) Navigate("/");
   }, [customer]);
   useEffect(() => {
     const fetchitemlist = async () => {
@@ -52,55 +52,63 @@ const CustomerOrder = () => {
     fetchitemlist();
   }, [category, page]);
   return (
-    <div className="bg-yellow-50 p-2 min-h-screen overflow-y-auto">
+    <div className="min-h-screen overflow-y-auto">
       <Navbar usertype={"customer"} />
-      <div className="carousel rounded-box h-100 py-3">
-        <div className="carousel-item h-full">
+      <div className="carousel py-3 w-full">
+        <div className="carousel-item rounded-full h-80 w-80">
           <img
             src="https://images.unsplash.com/photo-1727387562395-6be53e861975?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fHJlc3RhdXJhbnQlMjBmb29kfGVufDB8fDB8fHww"
             alt="Burger"
+            className="rounded-full h-full w-full object-cover"
           />
         </div>
-        <div className="carousel-item h-full">
+        <div className="carousel-item h-80 w-80">
           <img
             src="https://plus.unsplash.com/premium_photo-1663036447682-8f0d918adbed?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8cmVzdGF1cmFudCUyMGZvb2R8ZW58MHx8MHx8fDA%3D"
             alt="Burger"
+            className="rounded-full h-full w-full object-cover"
           />
         </div>
-        <div className="carousel-item h-full">
+        <div className="carousel-item h-80 w-80">
           <img
             src="https://images.unsplash.com/photo-1652690772703-0461a655643d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHJlc3RhdXJhbnQlMjBmb29kfGVufDB8fDB8fHww"
             alt="Burger"
+            className="rounded-full h-full w-full"
           />
         </div>
-        <div className="carousel-item h-full">
+        <div className="carousel-item h-80 w-80">
           <img
             src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHJlc3RhdXJhbnQlMjBmb29kfGVufDB8fDB8fHww"
             alt="Burger"
+            className="rounded-full h-full w-full objeect-cover"
           />
         </div>
-        <div className="carousel-item h-full">
+        <div className="carousel-item h-80 w-80">
           <img
             src="https://images.unsplash.com/photo-1502998070258-dc1338445ac2?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHJlc3RhdXJhbnQlMjBmb29kfGVufDB8fDB8fHww"
+            className="rounded-full h-full w-full object-cover"
             alt="Burger"
           />
         </div>
-        <div className="carousel-item h-full">
+        <div className="carousel-item h-80 w-80">
           <img
             src="https://images.unsplash.com/photo-1652690772450-2cc9c53060f5?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8cmVzdGF1cmFudCUyMGZvb2R8ZW58MHx8MHx8fDA%3D"
+            className="rounded-full h-full w-full object-cover"
             alt="Burger"
           />
         </div>
-        <div className="carousel-item h-full">
+        <div className="carousel-item h-80 w-80">
           <img
             src="https://images.unsplash.com/photo-1651440204227-a9a5b9d19712?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cmVzdGF1cmFudCUyMGZvb2R8ZW58MHx8MHx8fDA%3D"
+            className="rounded-full h-full w-full object-cover"
             alt="Burger"
           />
         </div>
       </div>
-      <div className="animate-fadeIn bg-gradient-to-r from-yellow-100 via-red-100 to-pink-100 p-6 rounded-2xl shadow-xl text-center max-w-xl mx-auto mt-5">
+      <div className="animate-fadeIn bg-gradient-to-r from-purple-200 p-6 rounded-2xl shadow-xl text-center max-w-xl mx-auto mt-5">
         <p className="text-3xl font-bold text-gray-800">
-          Track your <span className="text-red-500">Orders</span>{" "}here
+          Welcome to <span className="text-purple-800">Foodie</span>, to become{" "}
+          <span className="text-purple-800">Foodie</span>
         </p>
       </div>
       <div className="w-full px-4 py-6 overflow-x-auto scrollbar-hidden">

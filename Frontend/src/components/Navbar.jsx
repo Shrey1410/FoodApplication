@@ -5,10 +5,12 @@ import { CustomerContext } from "../context/CustomerContextProvider";
 import { VendorContext } from "../context/VendorContextProvider";
 import toast from "react-hot-toast";
 const VITE_API_URL = import.meta.env.VITE_API_URL;
+import { useNavigate } from "react-router-dom";
 const Navbar = (props) => {
   const { customer, setCustomer } = useContext(CustomerContext);
   const { vendor, setVendor } = useContext(VendorContext);
   const [searchQuery, setSearchQuery] = useState("");
+  const Navigate = useNavigate();
   const [searchResults, setSearchResults] = useState([]);
   const handelogoutcustomer = async () => {
     try {
@@ -64,14 +66,14 @@ const Navbar = (props) => {
   }, [searchQuery]);
 
   return (
-    <div className="flex animate-fadeIn bg-gradient-to-r justify-between navbar shadow-sm rounded-2xl  from-yellow-300 via-red-400 to-orange-300">
-      <div className="flex items-start justify-center">
+    <div className="flex animate-fadeIn bg-gradient-to-r justify-between navbar shadow-sm  from-purple-800 via-purple-500 to-purple-800">
+      <div className="flex justify-center items-center h-16">
         <img
           src="https://www.greenqueen.com.hk/wp-content/uploads/2013/09/Foodie-Logo.jpg"
-          className="w-10 h-10 rounded-2xl shadow-2xl"
+          className="w-10 h-10 rounded-full shadow-2xl"
           alt=""
         />
-        <p className="text-2xl font-bold px-2 flex animate-fadeIn bg-gradient-to-r from-yellow-800 via-red-900 to-orange-700 bg-clip-text text-transparent">
+        <p className="text-2xl font-bold px-2 flex bg-gradient-to-r text-purple-50">
           Foodie
         </p>
       </div>

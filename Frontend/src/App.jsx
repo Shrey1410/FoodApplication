@@ -12,6 +12,7 @@ import CustomerOrder from "./pages/CustomerOrder";
 import CustomerTrackorder from "./pages/CustomerTrackorder";
 import Profile from "./pages/Profile";
 import { Toaster } from "react-hot-toast";
+import EnterPage from "./pages/EnterPage";
 function App() {
   return (
     <>
@@ -32,7 +33,8 @@ function App() {
         }}
       />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path='/' element={<EnterPage/>} />
+        <Route path="/home" element={<Home />} />
         <Route path="/logincustomer" element={<LoginCustomer />} />
         <Route path="/registercustomer" element={<RegisterCustomer />} />
         <Route path="/loginvendor" element={<LoginVendor />} />

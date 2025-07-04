@@ -39,14 +39,16 @@ exports.placeorder = async (req, res) => {
 };
 
 exports.completeorder = async (req, res) => {
+  console.log("entered")
   const { orderid, otp } = req.body;
+  console.log(otp)
   if(!otp){
     return res.status(400).send({
       message : "Otp not found"
     })
   }
   const otpr = await orderModel.findOne({ _id: orderid });
-  if (bcrypt.compareSync(otp, otpr)) {
+  if (bcrypt.compareSync(otp, otpr.otp)) {
     const order = await orderModel.findByIdAndUpdate(
       { _id: orderid },
       {

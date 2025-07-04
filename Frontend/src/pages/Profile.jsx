@@ -9,14 +9,22 @@ const Profile = () => {
   const Navigate = useNavigate()
   useEffect(()=>{
     if(!customer && !vendor){
-        Navigate("/logincustomer")
+        Navigate("/")
     }
   }, [customer, vendor])
   return (
-    <div className="bg-yellow-50 min-h-screen m-2">
+    <div className="min-h-screen relative flex flex-col items-center">
+      <div className="absolute inset-0 -z-20">
+        <img
+          src="https://res.cloudinary.com/rainforest-cruises/images/c_fill,g_auto/f_auto,q_auto/w_1120,h_732,c_fill,g_auto/v1661347444/india-food-butter-chicken/india-food-butter-chicken-1120x732.jpg"
+          alt=""
+          className="h-full w-full object-cover transition-all duration-500"
+        />
+      </div>
+      <div className="absolute inset-0 -z-10 bg-purple-200/90"></div>
       <Navbar usertype="customer" />
-      <div className="max-w-xl mx-auto mt-10 bg-white rounded-2xl shadow-lg p-8">
-        <h2 className="text-3xl font-bold text-amber-700 mb-6 text-center">
+      <div className="absolute top-1/2 -translate-y-1/2 max-w-xl bg-white rounded-2xl shadow-lg p-8 bg-gradient-to-tr from-purple-100 via-purple-50 to-purple-300">
+        <h2 className="text-3xl font-bold text-purple-800 mb-6 text-center">
           My Profile
         </h2>
         {customer ? (
@@ -60,9 +68,7 @@ const Profile = () => {
           <div className="space-y-4">
             <div>
               <span className="font-semibold text-gray-700">Name:</span>
-              <span className="ml-2 text-gray-900">
-                {vendor.fullName}
-              </span>
+              <span className="ml-2 text-gray-900">{vendor.fullName}</span>
             </div>
             <div>
               <span className="font-semibold text-gray-700">Email:</span>

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { VendorContext } from "../context/VendorContextProvider";
 import { CustomerContext } from "../context/CustomerContextProvider";
 import axios from "axios";
@@ -23,10 +23,16 @@ const CustomerTrackorder = () => {
   let orderid = state?.order;
   const [order, setOrder] = useState(null);
   const [currentStep, setcurrentStep] = useState(1);
+  const Navigate = useNavigate()
+  useEffect(() => {
+    if (!customer && !vendor) {
+      Navigate("/");
+    }
+  }, [customer, vendor]);
   useEffect(() => {
     const getorderbyidvendor = async () => {
       try {
-        await new Promise((resolve) => setTimeout(resolve, 3000));
+        await new Promise((resolve) => setTimeout(resolve, 5000));
         const res = await axios.get(
           `${VITE_API_URL}/getorder/vendor/${orderid}`,
           {
@@ -42,7 +48,7 @@ const CustomerTrackorder = () => {
     if (vendor) getorderbyidvendor();
     const getorderbyidcustomer = async () => {
       try {
-        await new Promise((resolve) => setTimeout(resolve, 3000));
+        await new Promise((resolve) => setTimeout(resolve, 5000));
         const res = await axios.get(
           `${VITE_API_URL}/getorder/customer/${orderid}`,
           {
@@ -87,56 +93,59 @@ const CustomerTrackorder = () => {
       );
       setOrder(res.data.order);
       setcurrentStep(getStepIndex(res.data.order.status));
-      toast.success(res.data.message)
+      toast.success(res.data.message);
     } catch (err) {
       console.log(err);
-      toast.error(err.response.data.message)
+      toast.error(err.response.data.message);
     }
   };
   return order ? (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-amber-50 py-8">
-      <h2 className="text-2xl font-bold mb-8 text-amber-700">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-purple-100 py-8">
+      <h2 className="text-3xl font-bold hover:bg-purple-800 mb-8 text-purple-950">
         Track Your Order
       </h2>
-      <div className="flex items-center mb-10">
+      <div className="flex flex-col sm:flex-row items-center justify-center mb-10 gap-y-6 sm:gap-x-4 w-full">
         {statusSteps.map((step, idx) => (
-          <div key={step.key} className="flex items-center">
+          <div
+            key={step.key}
+            className="flex items-center sm:flex-row flex-col relative"
+          >
             <div
-              className={`flex items-center justify-center w-12 h-12 rounded-full border-2 text-lg font-bold
-                                ${
-                                  idx <= currentStep
-                                    ? "bg-amber-400 border-amber-400 text-white"
-                                    : "bg-gray-200 border-gray-300 text-gray-400"
-                                }
-                            `}
+              className={`flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 text-base sm:text-lg font-bold hover:bg-purple-800
+          ${
+            idx <= currentStep
+              ? "bg-purple-400 border-purple-400 text-white"
+              : "bg-gray-200 border-gray-500 text-gray-400"
+          }
+        `}
             >
               {idx + 1}
             </div>
-            <div className="flex flex-col items-center ml-2 mr-2">
+
+            <div className="flex flex-col items-center sm:ml-2 sm:mr-2 mt-2 sm:mt-0">
               <span
-                className={`text-sm font-semibold ${
-                  idx <= currentStep ? "text-amber-700" : "text-gray-400"
+                className={`text-xs sm:text-sm font-semibold text-center ${
+                  idx <= currentStep ? "text-purple-800" : "text-gray-400"
                 }`}
               >
                 {step.label}
               </span>
             </div>
+
             {idx < statusSteps.length - 1 && (
               <div
-                className={`h-1 w-16 rounded transition-all duration-300
-                                    ${
-                                      idx < currentStep
-                                        ? "bg-amber-400"
-                                        : "bg-gray-300"
-                                    }
-                                `}
+                className={`${
+                  idx < currentStep ? "bg-purple-400" : "bg-gray-500"
+                } sm:w-16 sm:h-1 w-1 h-8 rounded transition-all duration-500 sm:mx-2 my-2 sm:my-0`}
               />
             )}
           </div>
         ))}
       </div>
       <div className="bg-white shadow-lg rounded-xl p-8 w-full max-w-md">
-        <h3 className="text-lg font-bold mb-4 text-amber-700">Order Details</h3>
+        <h3 className="text-lg font-bold hover:bg-purple-800 mb-4 text-purple-800">
+          Order Details
+        </h3>
         <ul className="mb-4"></ul>
         <figure className="mb-2">
           <img
@@ -166,7 +175,7 @@ const CustomerTrackorder = () => {
         </p>
         {vendor && order.status === "pending" ? (
           <button
-            className="bg-yellow-300 rounded-2xl text-sm p-3 text-red-800 font-bold"
+            className="bg-purple-500 rounded-2xl text-sm p-3 text-white font-bold hover:bg-purple-800"
             onClick={(e) => {
               e.preventDefault();
               updatetoshipped();
@@ -190,7 +199,7 @@ const CustomerTrackorder = () => {
               }}
             />
             <button
-              className="bg-yellow-300 rounded-2xl text-sm p-3 text-red-800 font-bold"
+              className="bg-purple-500 rounded-2xl text-sm p-3 text-white font-bold hover:bg-purple-800"
               onClick={(e) => {
                 e.preventDefault();
                 updatetocompleted();
@@ -205,7 +214,9 @@ const CustomerTrackorder = () => {
       </div>
     </div>
   ) : (
-    <></>
+    <div className="h-screen w-screen flex items-center justify-center bg-white">
+      <div className="h-16 w-16 border-4 border-purple-500 border-t-transparent rounded-full animate-spin"></div>
+    </div>
   );
 };
 

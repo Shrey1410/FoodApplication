@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Order = (props) => {
   return (
     <div>
-      <div className="card w-96 shadow-sm bg-yellow-100">
+      <div className="card w-96 shadow-sm bg-purple-100">
         <div className="card-body items-center text-center">
           <figure className="px-10 pt-10">
             <img
