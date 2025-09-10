@@ -1,15 +1,126 @@
-It's a Food Market Place Application in which their are two type of user one is the customer(want to purchase) and other one is vendor(who want's to sell their products)
-Also the product or Food items shown to the user is also divided into categories for example chiness, italinan, india, dessert etc.
-This application also follows the mvc architecture.
-1. Models -
-   1.1 Vendor Model- {Name, ShopName, password, fullName, email, phoneno, address, totalOrder, pendingOrders, Completed Orders, totalRevenu}
-   1.2 Customer Model - {fullName, email, password, phoneno, address}
-   1.3 FoodItem Model - {itemImage(cloudinary url), Item Name, Price, CreatedBy, category, description}
-   1.4 Order Model - {item, orderedby, vendor, status, quantity, otp, timestamps}
-   1.5 OTP Model - {otp, createdBy, createdAt}
+# 🍴 Food Marketplace Application  
+
+A Food Marketplace platform where **Customers** can browse and purchase food items, while **Vendors** can sell their products.  
+Food items are categorized into different cuisines such as **Chinese, Italian, Indian, Desserts**, etc.  
+
+This application follows the **MVC Architecture**.  
+
+---
+
+## 📂 Project Structure  
+
+### 1. Models  
+
+#### 1.1 Vendor Model  
+```json
+{
+  "name": "string",
+  "shopName": "string",
+  "password": "string",
+  "fullName": "string",
+  "email": "string",
+  "phoneNo": "string",
+  "address": "string",
+  "totalOrders": "number",
+  "pendingOrders": "number",
+  "completedOrders": "number",
+  "totalRevenue": "number"
+}
+```
+#### 1.2 Customer Model
+```json
+{
+  "fullName": "string",
+  "email": "string",
+  "password": "string",
+  "phoneNo": "string",
+  "address": "string"
+}
+```
+#### 1.3 FoodItem Model
+```json
+{
+  "itemImage": "string (cloudinary url)",
+  "itemName": "string",
+  "price": "number",
+  "createdBy": "VendorId",
+  "category": "string",
+  "description": "string"
+}
+```
+#### 1.4 Order Model
+```json
+{
+  "item": "FoodItemId",
+  "orderedBy": "CustomerId",
+  "vendor": "VendorId",
+  "status": "string (pending/shipped/completed)",
+  "quantity": "number",
+  "otp": "string",
+  "timestamps": "date"
+}
+```
+
+#### 1.4 OTP Model
+```json
+{
+  "otp": "string",
+  "createdBy": "UserId",
+  "createdAt": "date"
+}
+```
+
 2. Controllers
-   1.1 Customer Controller - [register, login, logout, automaticlogin, otpverfication]
-   1.2 Vendor Controller -   [register, login, logout, automaticlogin, otpverfication]
-   1.3 order Controller - [placeanorder, shippedanorder, completeanorder, getorderbyid, getorderbyvendorpending, getorderbyvendorcompleted, getorderbyvendorshipped, searchorderbyid]
-   1.4 food controller - [createfooditem, getfooditembycategory, getfooditembyvendor]
-   1.5 Sales controller - [getyoursales]
+2.1 Customer Controller
+
+a. register
+
+b. login
+
+c. logout
+
+d. automaticLogin
+
+e. otpVerification
+
+2.2 Vendor Controller
+
+a. register
+
+b. login
+
+c. logout
+
+d. automaticLogin
+
+e. otpVerification
+
+2.3 Order Controller
+
+a. placeAnOrder
+
+b. shippedAnOrder
+
+c. completeAnOrder
+
+d. getOrderById
+
+e. getOrderByVendorPending
+
+f. getOrderByVendorCompleted
+
+g. getOrderByVendorShipped
+
+h. searchOrderById
+
+2.4 Food Controller
+
+a. createFoodItem
+
+b. getFoodItemByCategory
+
+c. getFoodItemByVendor
+
+2.5 Sales Controller
+
+a. getYourSales
