@@ -8,8 +8,8 @@ This application also follows the mvc architecture.
    1.4 Order Model - {item, orderedby, vendor, status, quantity, otp, timestamps}
    1.5 OTP Model - {otp, createdBy, createdAt}
 2. Controllers
-   1.1 Customer Controller -
-   1.2 Vendor Controller -
-   1.3 order Controller -
-   1.4 food controller -
-   1.5 Sales controller -
+   1.1 Customer Controller - [register, login, logout, automaticlogin, otpverfication]
+   1.2 Vendor Controller -   [register, login, logout, automaticlogin, otpverfication]
+   1.3 order Controller - [placeanorder, shippedanorder, completeanorder, getorderbyid, getorderbyvendorpending, getorderbyvendorcompleted, getorderbyvendorshipped, searchorderbyid]
+   1.4 food controller - [createfooditem, getfooditembycategory, getfooditembyvendor]
+   1.5 Sales controller - [getyoursales]
